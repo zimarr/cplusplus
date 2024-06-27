@@ -1,28 +1,25 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
-int main(){
-    string in;
-
-    cout << "\nEnter a string: ";
-    cin >> in;
-
-    bool isPalindrome = true;
-
-    for(int i = 0; i < in.size() / 2; i++){
-        if(in[i] != in[in.size() - i - 1]){
-            isPalindrome = false;
-        }
+bool isPalindrome(string s){
+    if(s.length() <= 2){
+        return s[0] == s[s.length() - 1];
     }
-
-    if(isPalindrome){
-        cout << "\nThat IS a palindrome...\n";
+    
+    if(isPalindrome(s.substr(1, s.length() - 2))){
+        return s[0] == s[s.length() - 1];
     } else {
-        cout << "\nThat is NOT a palindrome...\n";
+        return false;
     }
+}
 
+
+int main(){
+    string str;
+    cin >> str;
+
+    cout << isPalindrome(str);
 
     return 0;
 }
